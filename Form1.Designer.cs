@@ -44,6 +44,8 @@
             GorevYoneticisiniAktiflesir = new Button();
             yoneticiAl = new Button();
             groupBox2 = new GroupBox();
+            button2 = new Button();
+            getKeyFile = new Button();
             ccebar = new ProgressBar();
             CCeIndir = new Button();
             groupBox7 = new GroupBox();
@@ -158,6 +160,7 @@
             button6.TabIndex = 3;
             button6.Text = "Windows Gezginini Yeniden Başlat";
             button6.UseVisualStyleBackColor = false;
+            button6.Click += button6_Click;
             // 
             // GizliDosyalariGoster
             // 
@@ -252,6 +255,8 @@
             // groupBox2
             // 
             groupBox2.BackColor = SystemColors.Control;
+            groupBox2.Controls.Add(button2);
+            groupBox2.Controls.Add(getKeyFile);
             groupBox2.Controls.Add(ccebar);
             groupBox2.Controls.Add(CCeIndir);
             groupBox2.Controls.Add(groupBox7);
@@ -262,8 +267,33 @@
             groupBox2.Size = new Size(250, 644);
             groupBox2.TabIndex = 4;
             groupBox2.TabStop = false;
-            groupBox2.Text = "groupBox2";
+            groupBox2.Text = "Araç Kutusu";
             groupBox2.Visible = false;
+            // 
+            // button2
+            // 
+            button2.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            button2.ForeColor = Color.FromArgb(0, 0, 192);
+            button2.Location = new Point(156, -6);
+            button2.Name = "button2";
+            button2.Size = new Size(94, 37);
+            button2.TabIndex = 13;
+            button2.Text = "Yardım";
+            button2.UseVisualStyleBackColor = true;
+            button2.Click += button2_Click_1;
+            // 
+            // getKeyFile
+            // 
+            getKeyFile.BackColor = SystemColors.ControlDarkDark;
+            getKeyFile.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            getKeyFile.ForeColor = SystemColors.ControlLightLight;
+            getKeyFile.Location = new Point(6, 447);
+            getKeyFile.Name = "getKeyFile";
+            getKeyFile.Size = new Size(238, 98);
+            getKeyFile.TabIndex = 12;
+            getKeyFile.Text = "Anahtar Kodu Masaüstüne Çıkart [Deneysel]";
+            getKeyFile.UseVisualStyleBackColor = false;
+            getKeyFile.Click += button2_Click;
             // 
             // ccebar
             // 
@@ -396,7 +426,7 @@
             groupBox4.Controls.Add(label2);
             groupBox4.Location = new Point(276, 517);
             groupBox4.Name = "groupBox4";
-            groupBox4.Size = new Size(700, 97);
+            groupBox4.Size = new Size(700, 112);
             groupBox4.TabIndex = 9;
             groupBox4.TabStop = false;
             groupBox4.Text = "AntiATAK durumu";
@@ -405,11 +435,11 @@
             // 
             antiatakkurulumyolu.AutoSize = true;
             antiatakkurulumyolu.BackColor = Color.Transparent;
-            antiatakkurulumyolu.Font = new Font("Segoe UI", 13F, FontStyle.Regular, GraphicsUnit.Point);
+            antiatakkurulumyolu.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
             antiatakkurulumyolu.ForeColor = Color.Red;
-            antiatakkurulumyolu.Location = new Point(252, 61);
+            antiatakkurulumyolu.Location = new Point(8, 81);
             antiatakkurulumyolu.Name = "antiatakkurulumyolu";
-            antiatakkurulumyolu.Size = new Size(131, 30);
+            antiatakkurulumyolu.Size = new Size(91, 20);
             antiatakkurulumyolu.TabIndex = 9;
             antiatakkurulumyolu.Text = "Kurulu Değil";
             // 
@@ -417,7 +447,7 @@
             // 
             label4.AutoSize = true;
             label4.Font = new Font("Segoe UI", 13F, FontStyle.Regular, GraphicsUnit.Point);
-            label4.Location = new Point(8, 61);
+            label4.Location = new Point(8, 52);
             label4.Name = "label4";
             label4.Size = new Size(238, 30);
             label4.TabIndex = 8;
@@ -523,13 +553,13 @@
             // 
             logbox.AutoSize = true;
             logbox.BackColor = Color.Transparent;
-            logbox.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            logbox.Font = new Font("Consolas", 10F, FontStyle.Regular, GraphicsUnit.Point);
             logbox.ForeColor = SystemColors.ControlText;
             logbox.Location = new Point(0, 0);
             logbox.Name = "logbox";
-            logbox.Size = new Size(286, 23);
+            logbox.Size = new Size(360, 20);
             logbox.TabIndex = 1;
-            logbox.Text = "ATİÇAY StandAlone Olarak Başlatıldı.";
+            logbox.Text = "ATİÇAY Standalone | Microsoft .NET6 ASP\r\n";
             logbox.Click += logbox_Click;
             // 
             // pxbox
@@ -629,5 +659,7 @@
         private Label label9;
         private Label logbox;
         private GroupBox pxbox;
+        private Button getKeyFile;
+        private Button button2;
     }
 }

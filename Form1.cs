@@ -10,9 +10,13 @@ using System.Net;
 using Microsoft.Win32;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using Microsoft.VisualBasic.Devices;
+using System.IO.Compression;
 
 namespace ATİÇAY3
 {
+
+
+
     public partial class Form1 : Form
     {
         private string url = "https://cdn.glitch.global/809e4dc2-d822-44d3-960c-66b700aec03c/antiatak_aticay.exe?v=1688586111186";
@@ -87,15 +91,21 @@ namespace ATİÇAY3
         {
             while (!stopMonitoring)
             {
-                Process[] processes = Process.GetProcessesByName(applicationName);
-                isRunning = (processes.Length > 0);
-                Invoke((MethodInvoker)delegate
+                try
                 {
-                    UpdateStatusText();
-                    UpdateTaskManagerStatus();
-                    checkAntiAtakInstalled();
-                });
-                Thread.Sleep(700); // Belirli bir süre bekleyerek tekrar kontrol etmek için 2200 milisaniye kadar beklemeye al
+                    Process[] processes = Process.GetProcessesByName(applicationName);
+                    isRunning = (processes.Length > 0);
+                    Invoke((MethodInvoker)delegate
+                    {
+                        UpdateStatusText();
+                        UpdateTaskManagerStatus();
+                        checkAntiAtakInstalled();
+                    });
+                    Thread.Sleep(700); // Belirli bir süre bekleyerek tekrar kontrol etmek için 2200 milisaniye kadar beklemeye al
+                }
+                catch (Exception e)
+                {
+                }
             }
         }
         /* CheckApplicationStatus() INTERVAL Tanımlamaları SON  */
@@ -304,9 +314,7 @@ namespace ATİÇAY3
                     if (process.ProcessName == "explorer")
                     {
                         process.Kill();
-                        logbox.Text = "ATAK SERVİSİ KAPATILDI";
-                        logbox.ForeColor = Color.Red;
-                        logat("Explorer kapatıldı.");
+                        logat("Görev Yöneticisi Yeniden Başlatıldı");
                         Thread.Sleep(100);
                         Process.Start("explorer.exe");
                         break;
@@ -336,7 +344,7 @@ namespace ATİÇAY3
                 antiatakkurulumyolu.Visible = true;
                 antiatakkurulumyolu.Text = dosyaYolu;
                 antiatakkurulumyolu.ForeColor = Color.Green;
-                antiatakkurulumyolu.Font = new Font("Consolas", 9F, FontStyle.Regular, GraphicsUnit.Point);
+                antiatakkurulumyolu.Font = new Font("Seoge UI", 7F, FontStyle.Regular, GraphicsUnit.Point);
 
             }
             else
@@ -427,6 +435,7 @@ namespace ATİÇAY3
                     {
                         File.Delete(dosyaYolu);
                         antiAtakDurum.Text = "AntiATAK başarıyla kaldırıldı.";
+                        logat("AntiATAK Kaldırıldı.");
                         antiatakkurProgress.Style = ProgressBarStyle.Marquee;
                         AntiAtakKur.Text = "AntiATAK Kur";
                     }
@@ -453,6 +462,15 @@ namespace ATİÇAY3
             });
         }
         /* GithubOpenInBrowser() Son */
+
+        private void HelpWikiOpen()
+        {
+            System.Diagnostics.Process.Start(new ProcessStartInfo
+            {
+                FileName = "https://github.com/prescionx/aticay/wiki/Nas%C4%B1l-Kullan%C4%B1l%C4%B1r",
+                UseShellExecute = true
+            });
+        }
 
 
         /* CCe Son sürümü Comodo CDNden indirip masaüstüne kaydeder. CCeDownload() Fonksiyonu Başlangıcı*/
@@ -542,7 +560,7 @@ namespace ATİÇAY3
         /* Ortadaki Mesaj Kutusuna Birşeyler Yazdırmak için gerekli fonksiyon*/
         private void logat(string message)
         {
-            logbox.Text += message + Environment.NewLine;
+            logbox.Text += "[" + DateTime.Now.ToString("HH:mm:ss") + "] " + message + Environment.NewLine;
         }
 
 
@@ -619,7 +637,127 @@ namespace ATİÇAY3
         {
 
         }
+        private void button2_Click(object sender, EventArgs e)
+        {
+            CopyFileFromFlashDrive();
+        }
+
+
+
+
+
+        public void CopyFileFromFlashDrive()
+        {
+            // Masaüstü yolunu alın
+            // Masaüstü yolunu alın
+            string desktopPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+
+            // Kontrol etmek istediğiniz dosyanın tam yolunu oluşturun
+            string filePath = Path.Combine(desktopPath, "atak.veri");
+
+            // Dosya mevcutsa uyarı gösterin
+            if (File.Exists(filePath))
+            {
+                MessageBox.Show("Masaüstünde 'atak.veri' adında bir dosya bulunuyor. Önce bu dosyayı silin veya ismini değiştirin!", "[ATİÇAY] Hata!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+
+                // Tüm flash sürücüleri bulun
+                DriveInfo[] drives = DriveInfo.GetDrives();
+
+                foreach (DriveInfo drive in drives)
+                {
+                    if (drive.DriveType == DriveType.Removable)
+                    {
+                        // Flash sürücüsündeki tüm dizinleri ve alt dizinleri tarayın
+                        string flashDrivePath = drive.RootDirectory.FullName;
+
+                        SearchAndCopyFile(flashDrivePath, "atak.veri", desktopPath, drive.Name[0]);
+                    }
+                }
+            }
+        }
+
+
+        private void SearchAndCopyFile(string directoryPath, string fileName, string destinationPath, char driveLetter)
+        {
+            try
+            {
+                // Ana dizindeki klasörleri sırala
+                DirectoryInfo directory = new DirectoryInfo(directoryPath);
+                DirectoryInfo[] subDirectories = directory.GetDirectories();
+
+                foreach (DirectoryInfo subDirectory in subDirectories)
+                {
+                    // Dizin adının uzunluğunu kontrol et
+                    if (subDirectory.Name != "System Volume Information")
+                    {
+                        if (subDirectory.Name.Length > 10)
+                        {
+                            // "atak.veri" dosyasını ara
+                            string[] files = Directory.GetFiles(subDirectory.FullName, fileName, SearchOption.AllDirectories);
+
+                            foreach (string filePath in files)
+                            {
+                                // Dosyayı masaüstüne kopyala
+                                string destinationFilePath = Path.Combine(destinationPath, fileName);
+                                File.Copy(filePath, destinationFilePath, true);
+                                MessageBox.Show("Dosya başarıyla kopyalandı: " + destinationFilePath);
+                                logat("ATAK veri başarıyla " + destinationFilePath + " olarak kopyalandı");
+
+                                // Dizin.txt belgesini oluştur ve içeriğini yaz
+                                string dizinFilePath = Path.Combine(destinationPath, driveLetter + "_AticayATAK_Cikti_(" + DateTime.Now.ToString("yyyy-MM-dd.HH-mm-ss") + ").txt");
+                                using (StreamWriter writer = new StreamWriter(dizinFilePath, true))
+                                {
+                                    writer.WriteLine("[ATİÇAY v3 - ATAK KEY ÇIKARTICI BETA]");
+                                    writer.WriteLine("https://github.com/prescionx/aticay");
+                                    writer.WriteLine("================");
+                                    writer.WriteLine(" ");
+                                    writer.WriteLine(filePath);
+                                    writer.WriteLine(" ");
+                                    writer.WriteLine("================");
+                                    writer.WriteLine("Oluşturma Zamanı: " + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")); // Tarih ve saat bilgisini yazdır
+                                    writer.WriteLine(" ");
+                                    writer.WriteLine("Bu dosya " + driveLetter + " Belleğinin içinden çıkartılmıştır. ATAK için anahtar dosyayı içerir. ");
+                                    writer.WriteLine("Kendi USB Belleğinize atakveri.cikti txt içeriğindeki dizine atak.veri'yi kopyalayarak tahtayı açabilirsiniz.");
+                                    writer.WriteLine("Örneğin çıktı 'E:\\a735d8a8449bae6641f3128407e970c6\\atak.veri' olsun. Kendi usbnizin içinde");
+                                    writer.WriteLine("'a735d8a8449bae6641f3128407e970c6' isimli bir klasör açıp içine atak.veri'yi kopyalarsanız tahtayı TEORİDE kendi usbniz ile açabilirsiniz.");
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                // Hata durumunda isteğe bağlı olarak bir hata mesajı yazdırabilirsiniz
+                MessageBox.Show("Hata: " + e.Message);
+            }
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button2_Click_1(object sender, EventArgs e)
+        {
+            HelpWikiOpen();
+        }
     }
 }
 
 
+
+/*
+I'll be your blonde tonight if that's what you like
+Stilettos and fishnets, if that's what you like
+I'll be your hot nurse, school girl in curls
+Whatever your type, baby, if that's what you like, I'll do it
+
+https://music.youtube.com/watch?v=lL_bFGPJ8xM
+
+Developed by PrescionX. 2023 July. with love, as always.
+
+ */
