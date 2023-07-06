@@ -15,6 +15,8 @@ Proje Visual Studio 2022 Community ile geliştirilmiştir. Eski VS Çözümlerin
 1. **Standalone**: Bu tür tek derlemedir. Hiçbir kurulum gerektirmez, anında çalışır. (Yüksek Dosya Boyutu)
 2. **Depend** : Bu sürümün çalışabilmesi için sistemde  <a href="https://dotnet.microsoft.com/download/dotnet/6.0">.NET6 Runtime</a> 'in kurulu olması gerekir. (Düşük Dosya Boyutu)
 
+**Ne yaptığınızı bilmiyorsanız Standalone versiyonu kullanın.**
+
 # Nasıl Kullanılır?
 **Detaylı anlatım için  <a href="https://github.com/prescionx/aticay/wiki/Nasıl-Kullanılır">wiki</a>  sayfamızı ziyaret edebilirsiniz**
 
