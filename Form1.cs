@@ -703,7 +703,8 @@ namespace ATİÇAY3
                                 // Dosyayı masaüstüne kopyala
                                 string destinationFilePath = Path.Combine(destinationPath, fileName);
                                 File.Copy(filePath, destinationFilePath, true);
-                                MessageBox.Show("Dosya başarıyla kopyalandı: " + destinationFilePath);
+                                MessageBox.Show("Dosya başarıyla kopyalandı: " + destinationFilePath, "[ATİÇAY] Başarı!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
                                 logat("ATAK veri başarıyla " + destinationFilePath + " olarak kopyalandı");
 
                                 // Dizin.txt belgesini oluştur ve içeriğini yaz

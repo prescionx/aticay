@@ -591,6 +591,7 @@
             Controls.Add(yoneticiAl);
             Controls.Add(ytuyari);
             ForeColor = SystemColors.ControlText;
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Location = new Point(-1, -1);
             MaximizeBox = false;
             MaximumSize = new Size(1262, 745);

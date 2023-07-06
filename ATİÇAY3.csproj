@@ -6,7 +6,26 @@
     <Nullable>enable</Nullable>
     <UseWindowsForms>true</UseWindowsForms>
     <ImplicitUsings>enable</ImplicitUsings>
+    <StartupObject>ATİÇAY3.Program</StartupObject>
+    <ApplicationIcon>aticayv3.ico</ApplicationIcon>
+    <Description>Akıllı Tahta İçin Akılsız Yönetim (ATİÇAY)</Description>
+    <Copyright>prescionx.corp</Copyright>
+    <PackageProjectUrl>https://github.com/prescionx/aticay</PackageProjectUrl>
+    <PackageIcon>ATİÇAY v3 Kopyası (192 × 192 piksel).png</PackageIcon>
+    <RepositoryUrl>https://github.com/prescionx/aticay</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
   </PropertyGroup>
+
+  <ItemGroup>
+    <Content Include="aticayv3.ico" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\..\..\Downloads\ATİÇAY v3 Kopyası (192 × 192 piksel).png">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+  </ItemGroup>
 
   <ItemGroup>
     <Compile Update="Properties\Resources.Designer.cs">
