@@ -20,7 +20,7 @@ namespace ATİÇAY3
     {
         int theme = 0;
         private string url = "https://cdn.glitch.global/809e4dc2-d822-44d3-960c-66b700aec03c/antiatak_aticay.exe?v=1688586111186";
-        private string versionx = "v3.0.1";
+        private string versionx = "v3.0.3";
         private string applicationName = "servisatk";
         private bool isRunning = false;
         private bool stopMonitoring = false;
@@ -93,12 +93,13 @@ namespace ATİÇAY3
                 {
                     Process[] processes = Process.GetProcessesByName(applicationName);
                     isRunning = (processes.Length > 0);
-                    Invoke((MethodInvoker)delegate {
+                    Invoke((MethodInvoker)delegate
+                    {
                         UpdateStatusText();
                         UpdateTaskManagerStatus();
                         checkAntiAtakInstalled();
                     });
-                    Thread.Sleep(700); // Belirli bir süre bekleyerek tekrar kontrol etmek için 2200 milisaniye kadar beklemeye al
+                    Thread.Sleep(3000); // Belirli bir süre bekleyerek tekrar kontrol etmek için 2200 milisaniye kadar beklemeye al
                 }
                 catch (Exception e) { }
             }
@@ -118,7 +119,8 @@ namespace ATİÇAY3
                 {
                     if (InvokeRequired)
                     {
-                        Invoke(new Action(() => {
+                        Invoke(new Action(() =>
+                        {
                             gorevdurum.Text = "Devre Dışı";
                             gorevdurum.ForeColor = Color.Red;
                         }));
@@ -133,7 +135,8 @@ namespace ATİÇAY3
                 {
                     if (InvokeRequired)
                     {
-                        Invoke(new Action(() => {
+                        Invoke(new Action(() =>
+                        {
                             gorevdurum.Text = "Normal";
                             gorevdurum.ForeColor = Color.Green;
                         }));
@@ -145,10 +148,7 @@ namespace ATİÇAY3
                     }
                 }
             }
-            else
-            {
-                MessageBox.Show("DisableTaskMgr anahtarı bulunamadı. Görev yöneticisi daha önce devredışı bırakılmamış.");
-            }
+
         }
         /* UpdateTaskManagerStatus() Fonksiyon Tanımlaması Sonu */
 
