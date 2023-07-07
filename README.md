@@ -1,10 +1,13 @@
 ATİÇAY v3 (**A**kıllı **T**ahta **İç**in **A**kılsız **Y**önetim)
 ====
-<image src="https://i.hizliresim.com/9ew7pc4.jpg"></image>
+<image src="https://i.hizliresim.com/8h2vyug.jpg"></image>
 
 ## ATİÇAY'ı <a href="https://github.com/prescionx/aticay/releases/tag/main">buradan</a> edinebilirsiniz.
 
-**Not**: *Bu program henüz beta aşamasındadır ve hatalar içerebilir. Gelecekte bu hatalar giderilecek yeni özellikler eklenecektir.Bu sırada mevcut özellikler de geliştirilecektir. Hata bulursanız Lütfen Issue açın. Eğer katkıda bulunmak isterseniz pull req. gönderebilirsiniz. 
+**Not** : *Bu program henüz beta aşamasındadır ve hatalar içerebilir. Gelecekte bu hatalar giderilecek yeni özellikler eklenecektir.Bu sırada mevcut özellikler de geliştirilecektir. Hata bulursanız Lütfen Issue açın. Eğer katkıda bulunmak isterseniz pull req. gönderebilirsiniz. 
+**Not2**: *ATAK kurulum algoritmanısının nasıl çalıştığını açıklayan <a href="[https://github.com/prescionx/aticay/wiki/Nasıl-Kullanılır](https://github.com/prescionx/aticay/wiki/A.T.A.K-1.0.9-.ini-algoritmas%C4%B1-a%C3%A7%C4%B1kland%C4%B1)">wiki sayfasımızı</a>* ziyaret etmeyei unutmayın.
+# Değişim Kaydı
+  * Son Güncelleme ile <a href="https://github.com/prescionx/aticay/issues/1">#1</a> issue'si çözüldü. 
 
 # Başlangıç
 ## Windows çalıştıran Fatih Akıllı Tahtalar İçin Tweak ToolBox
@@ -27,6 +30,7 @@ Proje Visual Studio 2022 Community ile geliştirilmiştir. Eski VS Çözümlerin
 - [X] Tek Tuşla A.T.A.K koruma programlarını devre dışı bırakma [Anti-ATAK]
 - [X] CCe Killswitch gibi temizlik ürünlerini tek tuşla indirme
 - [X] A.T.A.K Anahtar şifreleme sistemi dosyalarını bulup masaüstüne çıkarma [*deneysel*]
+- [X] Yüksek Kontrastlı Koyu Tema 
 - [ ] Daha fazla özellik eklenecek...
 
 
