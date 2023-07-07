@@ -6,7 +6,7 @@ ATİÇAY v3 (**A**kıllı **T**ahta **İç**in **A**kılsız **Y**önetim)
 
 **Not** : *Bu program henüz beta aşamasındadır ve hatalar içerebilir. Gelecekte bu hatalar giderilecek yeni özellikler eklenecektir.Bu sırada mevcut özellikler de geliştirilecektir. Hata bulursanız Lütfen Issue açın. Eğer katkıda bulunmak isterseniz pull req. gönderebilirsiniz. 
 <br>
-**Not2**: *ATAK kurulum algoritmanısının nasıl çalıştığını açıklayan <a href="https://github.com/prescionx/aticay/wiki/A.T.A.K-1.0.9-.ini-algoritmas%C4%B1-a%C3%A7%C4%B1kland%C4%B1">wiki sayfasımızı</a> ziyaret etmeyei unutmayın.*
+**Not2**: *ATAK kurulum algoritmanısının nasıl çalıştığını açıklayan <a href="https://github.com/prescionx/aticay/wiki/A.T.A.K-1.0.9-.ini-algoritmas%C4%B1-a%C3%A7%C4%B1kland%C4%B1">wiki sayfasımızı</a> ziyaret etmeyi unutmayın.*
 # Değişim Kaydı
   * Son Güncelleme ile <a href="https://github.com/prescionx/aticay/issues/1">#1</a> issue'si çözüldü. 
 
