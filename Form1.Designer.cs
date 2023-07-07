@@ -35,9 +35,9 @@
             groupBox1 = new GroupBox();
             groupBox6 = new GroupBox();
             autorunAktiflestir = new Button();
-            button6 = new Button();
+            restartexplorer = new Button();
             GizliDosyalariGoster = new Button();
-            button1 = new Button();
+            DosyalariGizle = new Button();
             groupBox5 = new GroupBox();
             GorevYoneticisiniDevredisiBirak = new Button();
             GorevYoneticisiniBaslat = new Button();
@@ -53,6 +53,7 @@
             label3 = new Label();
             AntiAtakKaldir = new Button();
             AntiAtakKur = new Button();
+            themebutton = new Button();
             label1 = new Label();
             gorevdurum = new Label();
             servisatakDurum = new Label();
@@ -102,7 +103,7 @@
             // 
             // antiatakkurProgress
             // 
-            antiatakkurProgress.MarqueeAnimationSpeed = 5;
+            antiatakkurProgress.MarqueeAnimationSpeed = 3;
             antiatakkurProgress.Name = "antiatakkurProgress";
             antiatakkurProgress.Size = new Size(1000, 18);
             antiatakkurProgress.Step = 25;
@@ -110,7 +111,7 @@
             // 
             // groupBox1
             // 
-            groupBox1.BackColor = SystemColors.Control;
+            groupBox1.BackColor = Color.Transparent;
             groupBox1.Controls.Add(groupBox6);
             groupBox1.Controls.Add(groupBox5);
             groupBox1.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
@@ -126,9 +127,9 @@
             // groupBox6
             // 
             groupBox6.Controls.Add(autorunAktiflestir);
-            groupBox6.Controls.Add(button6);
+            groupBox6.Controls.Add(restartexplorer);
             groupBox6.Controls.Add(GizliDosyalariGoster);
-            groupBox6.Controls.Add(button1);
+            groupBox6.Controls.Add(DosyalariGizle);
             groupBox6.Location = new Point(0, 294);
             groupBox6.Name = "groupBox6";
             groupBox6.Size = new Size(238, 350);
@@ -138,7 +139,7 @@
             // 
             // autorunAktiflestir
             // 
-            autorunAktiflestir.BackColor = SystemColors.ActiveCaption;
+            autorunAktiflestir.BackColor = Color.LightBlue;
             autorunAktiflestir.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             autorunAktiflestir.ForeColor = SystemColors.ControlText;
             autorunAktiflestir.Location = new Point(16, 263);
@@ -149,22 +150,22 @@
             autorunAktiflestir.UseVisualStyleBackColor = false;
             autorunAktiflestir.Click += autorunAktiflestir_Click;
             // 
-            // button6
+            // restartexplorer
             // 
-            button6.BackColor = Color.Yellow;
-            button6.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            button6.ForeColor = SystemColors.ControlText;
-            button6.Location = new Point(16, 185);
-            button6.Name = "button6";
-            button6.Size = new Size(207, 72);
-            button6.TabIndex = 3;
-            button6.Text = "Windows Gezginini Yeniden Başlat";
-            button6.UseVisualStyleBackColor = false;
-            button6.Click += button6_Click;
+            restartexplorer.BackColor = Color.Yellow;
+            restartexplorer.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            restartexplorer.ForeColor = SystemColors.ControlText;
+            restartexplorer.Location = new Point(16, 185);
+            restartexplorer.Name = "restartexplorer";
+            restartexplorer.Size = new Size(207, 72);
+            restartexplorer.TabIndex = 3;
+            restartexplorer.Text = "Windows Gezginini Yeniden Başlat";
+            restartexplorer.UseVisualStyleBackColor = false;
+            restartexplorer.Click += button6_Click;
             // 
             // GizliDosyalariGoster
             // 
-            GizliDosyalariGoster.BackColor = Color.FromArgb(125, 225, 125);
+            GizliDosyalariGoster.BackColor = Color.PaleGreen;
             GizliDosyalariGoster.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             GizliDosyalariGoster.ForeColor = SystemColors.ControlText;
             GizliDosyalariGoster.Location = new Point(16, 29);
@@ -175,18 +176,18 @@
             GizliDosyalariGoster.UseVisualStyleBackColor = false;
             GizliDosyalariGoster.Click += GizliDosyalariGoster_Click;
             // 
-            // button1
+            // DosyalariGizle
             // 
-            button1.BackColor = Color.FromArgb(225, 125, 125);
-            button1.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            button1.ForeColor = SystemColors.ControlText;
-            button1.Location = new Point(16, 107);
-            button1.Name = "button1";
-            button1.Size = new Size(207, 72);
-            button1.TabIndex = 0;
-            button1.Text = "Gizli Dosyaları Gösterme\r\n";
-            button1.UseVisualStyleBackColor = false;
-            button1.Click += button1_Click;
+            DosyalariGizle.BackColor = Color.LightCoral;
+            DosyalariGizle.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            DosyalariGizle.ForeColor = SystemColors.ControlText;
+            DosyalariGizle.Location = new Point(16, 107);
+            DosyalariGizle.Name = "DosyalariGizle";
+            DosyalariGizle.Size = new Size(207, 72);
+            DosyalariGizle.TabIndex = 0;
+            DosyalariGizle.Text = "Gizli Dosyaları Gösterme\r\n";
+            DosyalariGizle.UseVisualStyleBackColor = false;
+            DosyalariGizle.Click += button1_Click;
             // 
             // groupBox5
             // 
@@ -203,14 +204,14 @@
             // 
             // GorevYoneticisiniDevredisiBirak
             // 
-            GorevYoneticisiniDevredisiBirak.BackColor = Color.FromArgb(225, 125, 125);
+            GorevYoneticisiniDevredisiBirak.BackColor = Color.LightCoral;
             GorevYoneticisiniDevredisiBirak.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             GorevYoneticisiniDevredisiBirak.ForeColor = SystemColors.ControlText;
             GorevYoneticisiniDevredisiBirak.Location = new Point(16, 182);
             GorevYoneticisiniDevredisiBirak.Name = "GorevYoneticisiniDevredisiBirak";
             GorevYoneticisiniDevredisiBirak.Size = new Size(207, 72);
             GorevYoneticisiniDevredisiBirak.TabIndex = 3;
-            GorevYoneticisiniDevredisiBirak.Text = "Görev Yöneticsini Devredışı Bırak\r\n";
+            GorevYoneticisiniDevredisiBirak.Text = "Görev Yöneticisini Devredışı Bırak\r\n";
             GorevYoneticisiniDevredisiBirak.UseVisualStyleBackColor = false;
             GorevYoneticisiniDevredisiBirak.Click += GorevYoneticisiniDevredisiBirak_Click;
             // 
@@ -229,7 +230,7 @@
             // 
             // GorevYoneticisiniAktiflesir
             // 
-            GorevYoneticisiniAktiflesir.BackColor = Color.FromArgb(125, 225, 125);
+            GorevYoneticisiniAktiflesir.BackColor = Color.PaleGreen;
             GorevYoneticisiniAktiflesir.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             GorevYoneticisiniAktiflesir.ForeColor = SystemColors.ControlText;
             GorevYoneticisiniAktiflesir.Location = new Point(16, 26);
@@ -254,7 +255,7 @@
             // 
             // groupBox2
             // 
-            groupBox2.BackColor = SystemColors.Control;
+            groupBox2.BackColor = Color.Transparent;
             groupBox2.Controls.Add(button2);
             groupBox2.Controls.Add(getKeyFile);
             groupBox2.Controls.Add(ccebar);
@@ -272,13 +273,14 @@
             // 
             // button2
             // 
-            button2.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            button2.ForeColor = Color.FromArgb(0, 0, 192);
-            button2.Location = new Point(156, -6);
+            button2.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point);
+            button2.ForeColor = Color.Blue;
+            button2.Location = new Point(156, 0);
             button2.Name = "button2";
-            button2.Size = new Size(94, 37);
+            button2.Size = new Size(94, 32);
             button2.TabIndex = 13;
             button2.Text = "Yardım";
+            button2.TextAlign = ContentAlignment.TopCenter;
             button2.UseVisualStyleBackColor = true;
             button2.Click += button2_Click_1;
             // 
@@ -352,9 +354,9 @@
             // 
             // AntiAtakKaldir
             // 
-            AntiAtakKaldir.BackColor = Color.Purple;
+            AntiAtakKaldir.BackColor = Color.Violet;
             AntiAtakKaldir.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            AntiAtakKaldir.ForeColor = SystemColors.ControlLightLight;
+            AntiAtakKaldir.ForeColor = SystemColors.Desktop;
             AntiAtakKaldir.Location = new Point(16, 160);
             AntiAtakKaldir.Name = "AntiAtakKaldir";
             AntiAtakKaldir.Size = new Size(207, 72);
@@ -375,6 +377,17 @@
             AntiAtakKur.Text = "AntiATAK Kur";
             AntiAtakKur.UseVisualStyleBackColor = false;
             AntiAtakKur.Click += AntiAtakKur_Click;
+            // 
+            // themebutton
+            // 
+            themebutton.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            themebutton.Location = new Point(579, 81);
+            themebutton.Name = "themebutton";
+            themebutton.Size = new Size(121, 29);
+            themebutton.TabIndex = 15;
+            themebutton.Text = "Temayı Değiştir";
+            themebutton.UseVisualStyleBackColor = true;
+            themebutton.Click += button4_Click;
             // 
             // label1
             // 
@@ -420,6 +433,7 @@
             // 
             // groupBox4
             // 
+            groupBox4.Controls.Add(themebutton);
             groupBox4.Controls.Add(antiatakkurulumyolu);
             groupBox4.Controls.Add(label4);
             groupBox4.Controls.Add(antiAtakDurum);
@@ -512,9 +526,9 @@
             label8.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
             label8.Location = new Point(8, 66);
             label8.Name = "label8";
-            label8.Size = new Size(321, 20);
+            label8.Size = new Size(319, 20);
             label8.TabIndex = 7;
-            label8.Text = "Akıllı Tahta İÇin Akılsız Yönetim [TEŞEKKÜRLER]";
+            label8.Text = "Akıllı Tahta İçin Akılsız Yönetim [TEŞEKKÜRLER]";
             // 
             // label7
             // 
@@ -539,12 +553,12 @@
             // label9
             // 
             label9.AutoSize = true;
-            label9.BackColor = SystemColors.Control;
-            label9.Font = new Font("MS PGothic", 12F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point);
+            label9.BackColor = Color.Transparent;
+            label9.Font = new Font("Malgun Gothic Semilight", 12F, FontStyle.Regular, GraphicsUnit.Point);
             label9.ForeColor = SystemColors.ControlText;
             label9.Location = new Point(465, 636);
             label9.Name = "label9";
-            label9.Size = new Size(350, 20);
+            label9.Size = new Size(322, 28);
             label9.TabIndex = 13;
             label9.Text = "https://github.com/prescionx/aticay\r\n";
             label9.Click += label9_Click;
@@ -555,7 +569,7 @@
             logbox.BackColor = Color.Transparent;
             logbox.Font = new Font("Consolas", 10F, FontStyle.Regular, GraphicsUnit.Point);
             logbox.ForeColor = SystemColors.ControlText;
-            logbox.Location = new Point(0, 0);
+            logbox.Location = new Point(0, 12);
             logbox.Name = "logbox";
             logbox.Size = new Size(360, 20);
             logbox.TabIndex = 1;
@@ -565,7 +579,7 @@
             // pxbox
             // 
             pxbox.BackColor = Color.White;
-            pxbox.BackgroundImage = (Image)resources.GetObject("pxbox.BackgroundImage");
+            pxbox.BackgroundImage = Properties.Resources.aticaybeyaz;
             pxbox.Controls.Add(logbox);
             pxbox.Location = new Point(268, 20);
             pxbox.Name = "pxbox";
@@ -590,7 +604,7 @@
             Controls.Add(groupBox3);
             Controls.Add(yoneticiAl);
             Controls.Add(ytuyari);
-            ForeColor = SystemColors.ControlText;
+            ForeColor = Color.Black;
             Icon = (Icon)resources.GetObject("$this.Icon");
             Location = new Point(-1, -1);
             MaximizeBox = false;
@@ -638,13 +652,13 @@
         private Label antiatakkurulumyolu;
         private Label label4;
         private Button GorevYoneticisiniAktiflesir;
-        private Button button1;
+        private Button DosyalariGizle;
         private Button AntiAtakKaldir;
         private GroupBox groupBox7;
         private Label label3;
         private Button AntiAtakKur;
         private Button autorunAktiflestir;
-        private Button button6;
+        private Button restartexplorer;
         private Button GizliDosyalariGoster;
         private Button GorevYoneticisiniDevredisiBirak;
         private Button GorevYoneticisiniBaslat;
@@ -662,5 +676,6 @@
         private GroupBox pxbox;
         private Button getKeyFile;
         private Button button2;
+        private Button themebutton;
     }
 }

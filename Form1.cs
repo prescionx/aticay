@@ -11,6 +11,7 @@ using Microsoft.Win32;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using Microsoft.VisualBasic.Devices;
 using System.IO.Compression;
+using ATİÇAY3.Properties;
 
 namespace ATİÇAY3
 {
@@ -19,6 +20,7 @@ namespace ATİÇAY3
 
     public partial class Form1 : Form
     {
+        int theme = 0;
         private string url = "https://cdn.glitch.global/809e4dc2-d822-44d3-960c-66b700aec03c/antiatak_aticay.exe?v=1688586111186";
         private string versionx = "v3.0.1";
         private string applicationName = "servisatk";
@@ -40,7 +42,7 @@ namespace ATİÇAY3
 
             if (isAdmin)
             {
-                this.Text = "ATİÇAY [YÖNETİCİ]";
+                this.Text = "ATİÇAY " + versionx + " [YÖNETİCİ]";
                 uactext.Text = "ATİÇAY Yönetici Olarak Çalışıyor";
                 logat("ATİÇAY Yönetici Hakları ile başlatıldı");
                 yoneticiAl.Visible = false;
@@ -50,10 +52,9 @@ namespace ATİÇAY3
             }
             else
             {
-                this.Text = "ATİÇAY [KULLANICI]";
+                this.Text = "ATİÇAY " + versionx + " [YÖNETİCİ OLARAK YENİDEN BAŞLATIN!]";
                 uactext.Text = "ATİÇAY Yönetici Olarak Çalışmıyor";
                 uactext.ForeColor = Color.Red;
-                logat("[ RİSKLİ!!] ATİÇAY Yönetici Hakları Olmadan başlatıldı");
                 yoneticiAl.Visible = true;
                 groupBox1.Visible = false;
                 groupBox2.Visible = false;
@@ -644,7 +645,128 @@ namespace ATİÇAY3
 
 
 
+        public void ToggleTheme()
+        {
+            if (theme == 0)
+            {
+                themebutton.ForeColor = Color.Black;
+                this.BackColor = Color.Black;
+                this.ForeColor = Color.White;
+                label9.ForeColor = Color.White;
+                groupBox1.ForeColor = Color.White;
+                groupBox2.ForeColor = Color.White;
+                groupBox3.ForeColor = Color.White;
+                groupBox4.ForeColor = Color.White;
+                groupBox5.ForeColor = Color.White;
+                groupBox6.ForeColor = Color.White;
+                groupBox7.ForeColor = Color.White;
+                groupBox8.ForeColor = Color.White;
+                logbox.ForeColor = Color.White;
+                themebutton.ForeColor = Color.White;
+                logboxtemizle.ForeColor = Color.White;
+                logboxtemizle.BackColor = Color.Black;
+                button2.ForeColor = Color.Cyan;
+                button2.BackColor = Color.Black;
+                statusStrip1.BackColor = Color.Black;
+                statusStrip1.ForeColor = Color.White;
+                pxbox.BackgroundImage = Properties.Resources.atidark;
 
+                GorevYoneticisiniAktiflesir.BackColor = Color.DarkGreen;
+                GorevYoneticisiniAktiflesir.ForeColor = Color.White;
+
+                GorevYoneticisiniBaslat.BackColor = Color.Goldenrod;
+                GorevYoneticisiniBaslat.ForeColor = Color.White;
+
+                GorevYoneticisiniDevredisiBirak.BackColor = Color.Firebrick;
+                GorevYoneticisiniDevredisiBirak.ForeColor = Color.White;
+
+                GizliDosyalariGoster.BackColor = Color.DarkGreen;
+                GizliDosyalariGoster.ForeColor = Color.White;
+
+                DosyalariGizle.BackColor = Color.Firebrick;
+                DosyalariGizle.ForeColor = Color.White;
+
+                restartexplorer.BackColor = Color.Goldenrod;
+                restartexplorer.ForeColor = Color.White;
+
+                autorunAktiflestir.BackColor = Color.SteelBlue;
+                autorunAktiflestir.ForeColor = Color.White;
+
+                AntiAtakKur.BackColor = Color.Teal;
+                AntiAtakKur.ForeColor = Color.White;
+
+                AntiAtakKaldir.BackColor = Color.Purple;
+                AntiAtakKaldir.ForeColor = Color.White;
+
+                CCeIndir.BackColor = Color.SaddleBrown;
+                CCeIndir.ForeColor = Color.White;
+
+                themebutton.BackColor = Color.Black;
+                themebutton.ForeColor = Color.White;
+
+
+                theme = 1;
+            }
+            else
+            {
+                this.BackColor = SystemColors.Control;
+                this.ForeColor = Color.Black;
+                label9.ForeColor = Color.Black;
+                groupBox1.ForeColor = Color.Black;
+                groupBox2.ForeColor = Color.Black;
+                groupBox3.ForeColor = Color.Black;
+                groupBox4.ForeColor = Color.Black;
+                groupBox5.ForeColor = Color.Black;
+                groupBox6.ForeColor = Color.Black;
+                groupBox7.ForeColor = Color.Black;
+                groupBox8.ForeColor = Color.Black;
+                logbox.ForeColor = Color.Black;
+                themebutton.ForeColor = Color.Black;
+                statusStrip1.BackColor = SystemColors.Control;
+                statusStrip1.ForeColor = Color.Black;
+                logboxtemizle.ForeColor = Color.Black;
+                logboxtemizle.BackColor = SystemColors.Control;
+                button2.ForeColor = Color.Blue;
+                button2.BackColor = Color.Transparent;
+                pxbox.BackgroundImage = Properties.Resources.aticaybeyaz;
+
+                GorevYoneticisiniAktiflesir.BackColor = Color.PaleGreen;
+                GorevYoneticisiniAktiflesir.ForeColor = Color.Black;
+
+                GorevYoneticisiniBaslat.BackColor = Color.Yellow;
+                GorevYoneticisiniBaslat.ForeColor = Color.Black;
+
+                GorevYoneticisiniDevredisiBirak.BackColor = Color.LightCoral;
+                GorevYoneticisiniDevredisiBirak.ForeColor = Color.Black;
+
+                GizliDosyalariGoster.BackColor = Color.PaleGreen;
+                GizliDosyalariGoster.ForeColor = Color.Black;
+
+                DosyalariGizle.BackColor = Color.LightCoral;
+                DosyalariGizle.ForeColor = Color.Black;
+
+                restartexplorer.BackColor = Color.Yellow;
+                restartexplorer.ForeColor = Color.Black;
+
+                autorunAktiflestir.BackColor = Color.LightBlue;
+                autorunAktiflestir.ForeColor = Color.Black;
+
+                AntiAtakKur.BackColor = Color.Aquamarine;
+                AntiAtakKur.ForeColor = Color.Black;
+
+                AntiAtakKaldir.BackColor = Color.Violet;
+                AntiAtakKaldir.ForeColor = Color.Black;
+
+                CCeIndir.BackColor = Color.AntiqueWhite;
+                CCeIndir.ForeColor = Color.Black;
+
+                themebutton.BackColor = SystemColors.Control;
+                themebutton.ForeColor = Color.Black;
+
+
+                theme = 0;
+            }
+        }
 
         public void CopyFileFromFlashDrive()
         {
@@ -672,15 +794,16 @@ namespace ATİÇAY3
                     {
                         // Flash sürücüsündeki tüm dizinleri ve alt dizinleri tarayın
                         string flashDrivePath = drive.RootDirectory.FullName;
+                        string driveName = drive.Name;
 
-                        SearchAndCopyFile(flashDrivePath, "atak.veri", desktopPath, drive.Name[0]);
+                        SearchAndCopyFile(flashDrivePath, "atak.veri", desktopPath, drive.Name[0], driveName);
                     }
                 }
             }
         }
 
 
-        private void SearchAndCopyFile(string directoryPath, string fileName, string destinationPath, char driveLetter)
+        private void SearchAndCopyFile(string directoryPath, string fileName, string destinationPath, char driveLetter, string driveName)
         {
             try
             {
@@ -690,7 +813,7 @@ namespace ATİÇAY3
 
                 foreach (DirectoryInfo subDirectory in subDirectories)
                 {
-                    // Dizin adının uzunluğunu kontrol et
+                    // Dizin adını kontrol et
                     if (subDirectory.Name != "System Volume Information")
                     {
                         if (subDirectory.Name.Length > 10)
@@ -720,7 +843,7 @@ namespace ATİÇAY3
                                     writer.WriteLine("================");
                                     writer.WriteLine("Oluşturma Zamanı: " + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")); // Tarih ve saat bilgisini yazdır
                                     writer.WriteLine(" ");
-                                    writer.WriteLine("Bu dosya " + driveLetter + " Belleğinin içinden çıkartılmıştır. ATAK için anahtar dosyayı içerir. ");
+                                    writer.WriteLine("Bu dosya " + driveLetter + "(" + driveName + ") Belleğinin içinden çıkartılmıştır. ATAK için anahtar dosyayı içerir. ");
                                     writer.WriteLine("Kendi USB Belleğinize atakveri.cikti txt içeriğindeki dizine atak.veri'yi kopyalayarak tahtayı açabilirsiniz.");
                                     writer.WriteLine("Örneğin çıktı 'E:\\a735d8a8449bae6641f3128407e970c6\\atak.veri' olsun. Kendi usbnizin içinde");
                                     writer.WriteLine("'a735d8a8449bae6641f3128407e970c6' isimli bir klasör açıp içine atak.veri'yi kopyalarsanız tahtayı TEORİDE kendi usbniz ile açabilirsiniz.");
@@ -739,12 +862,17 @@ namespace ATİÇAY3
 
         private void button6_Click(object sender, EventArgs e)
         {
-
+            ExplorerRestart();
         }
 
         private void button2_Click_1(object sender, EventArgs e)
         {
             HelpWikiOpen();
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            ToggleTheme();
         }
     }
 }
@@ -752,13 +880,58 @@ namespace ATİÇAY3
 
 
 /*
-I'll be your blonde tonight if that's what you like
-Stilettos and fishnets, if that's what you like
-I'll be your hot nurse, school girl in curls
-Whatever your type, baby, if that's what you like, I'll do it
+When the sun goes down, all our sins collide
+When the moon comes out, I'm a devil inside
+Gonna go all night, 'cause you know we arrange it right
 
-https://music.youtube.com/watch?v=lL_bFGPJ8xM
+We don't sleep at night
+We don't sleep at night
+We don't sleep at night
+
+In the land of milk and honey
+We spendin' all our parent's money
+Don't give a fuck about tomorrow
+We only care about tonight
+
+When the sun goes down, all our sins collide
+When the moon comes out, I'm a devil inside
+Gonna go all night, 'cause you know we arrange it right
+
+We don't sleep at night
+We don't sleep at night
+We don't sleep at night
+Poppin' pills
+For the thrills
+We don't sleep at night
+
+Turning you on when the lights go off, o-o-o-o-off
+Turning you on when the lights go off
+We don't sleep at night
+
+You make me hungry like the wolves
+'Cause I'm a creature of the night
+
+Doctor says I got a problem
+'Cause I think sleep is for the weak
+I wanna bite him like a vampire
+'Cause I'm a kinky little freak
+
+When the sun goes down, all our sins collide
+When the moon comes out, I'm a devil inside
+Gonna go all night, 'cause you know we arrange it right
+We don't sleep at night
+
+
+Turning you on when the lights go off, o-o-o-o-off
+Turning you on when the lights go off
+We don't sleep at night
+Turning you on when the lights go off
+We don't sleep at night
+
+
+WE • DONT • SLEEP • AT • NIGHT
+
 
 Developed by PrescionX. 2023 July. with love, as always.
-
+s
  */
