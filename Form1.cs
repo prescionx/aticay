@@ -847,6 +847,9 @@ namespace ATİÇAY3
                                     writer.WriteLine("Kendi USB Belleğinize atakveri.cikti txt içeriğindeki dizine atak.veri'yi kopyalayarak tahtayı açabilirsiniz.");
                                     writer.WriteLine("Örneğin çıktı 'E:\\a735d8a8449bae6641f3128407e970c6\\atak.veri' olsun. Kendi usbnizin içinde");
                                     writer.WriteLine("'a735d8a8449bae6641f3128407e970c6' isimli bir klasör açıp içine atak.veri'yi kopyalarsanız tahtayı TEORİDE kendi usbniz ile açabilirsiniz.");
+                                    writer.WriteLine(" ");
+                                    writer.WriteLine("https://github.com/prescionx/aticay/wiki/A.T.A.K-1.0.9-.ini-algoritmas%C4%B1-a%C3%A7%C4%B1kland%C4%B1");
+                                    writer.WriteLine("adresini ziyaret edin veya program üzerindeki yardım butonuna tıkladıktan sonra wikiye gelin ve oradan okuyun.");
                                 }
                             }
                         }
