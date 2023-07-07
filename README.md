@@ -2,7 +2,7 @@ ATİÇAY v3 (**A**kıllı **T**ahta **İç**in **A**kılsız **Y**önetim)
 ====
 <image src="https://i.hizliresim.com/8h2vyug.jpg"></image>
 
-## ATİÇAY'ı <a href="https://github.com/prescionx/aticay/releases/tag/main">buradan</a> edinebilirsiniz.
+## ATİÇAY'ı <a href="https://github.com/prescionx/aticay/releases/">buradan</a> edinebilirsiniz.
 
 **Not** : *Bu program henüz beta aşamasındadır ve hatalar içerebilir. Gelecekte bu hatalar giderilecek yeni özellikler eklenecektir.Bu sırada mevcut özellikler de geliştirilecektir. Hata bulursanız Lütfen Issue açın. Eğer katkıda bulunmak isterseniz pull req. gönderebilirsiniz. 
 <br>
