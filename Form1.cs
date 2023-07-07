@@ -16,8 +16,6 @@ using ATİÇAY3.Properties;
 namespace ATİÇAY3
 {
 
-
-
     public partial class Form1 : Form
     {
         int theme = 0;
@@ -27,7 +25,8 @@ namespace ATİÇAY3
         private bool isRunning = false;
         private bool stopMonitoring = false;
         private bool isDragging = false;
-        private int mouseX, mouseY;
+        private int mouseX,
+        mouseY;
         private HttpClient httpClient = new HttpClient();
 
         public Form1()
@@ -37,7 +36,8 @@ namespace ATİÇAY3
 
         private void Form1_Load(object sender, EventArgs e) // Formun Yüklenmesi İle Tetiklenecek Eventler
         {
-            WindowsIdentity identity = WindowsIdentity.GetCurrent(); WindowsPrincipal principal = new WindowsPrincipal(identity);
+            WindowsIdentity identity = WindowsIdentity.GetCurrent();
+            WindowsPrincipal principal = new WindowsPrincipal(identity);
             bool isAdmin = principal.IsInRole(WindowsBuiltInRole.Administrator);
 
             if (isAdmin)
@@ -73,15 +73,12 @@ namespace ATİÇAY3
 
         }
 
-
         protected override void OnFormClosing(FormClosingEventArgs e) // Form Kapatıldığında tetiklenecek Eventler
         {
             base.OnFormClosing(e);
             stopMonitoring = true;
             httpClient.Dispose();
         }
-
-
 
         //////////////////// //////////////////// ///////
         ////////////// FONKSİYONLAR BAŞLANGIÇ ///////////
@@ -96,23 +93,17 @@ namespace ATİÇAY3
                 {
                     Process[] processes = Process.GetProcessesByName(applicationName);
                     isRunning = (processes.Length > 0);
-                    Invoke((MethodInvoker)delegate
-                    {
+                    Invoke((MethodInvoker)delegate {
                         UpdateStatusText();
                         UpdateTaskManagerStatus();
                         checkAntiAtakInstalled();
                     });
                     Thread.Sleep(700); // Belirli bir süre bekleyerek tekrar kontrol etmek için 2200 milisaniye kadar beklemeye al
                 }
-                catch (Exception e)
-                {
-                }
+                catch (Exception e) { }
             }
         }
         /* CheckApplicationStatus() INTERVAL Tanımlamaları SON  */
-
-
-
 
         /* UpdateTaskManagerStatus() Fonksiyon Tanımlaması Başlangıcı */
         private void UpdateTaskManagerStatus() // Görev yöneticisinin sistemde devrede olup olmadığını denetle.
@@ -127,7 +118,10 @@ namespace ATİÇAY3
                 {
                     if (InvokeRequired)
                     {
-                        Invoke(new Action(() => { gorevdurum.Text = "Devre Dışı"; gorevdurum.ForeColor = Color.Red; }));
+                        Invoke(new Action(() => {
+                            gorevdurum.Text = "Devre Dışı";
+                            gorevdurum.ForeColor = Color.Red;
+                        }));
                     }
                     else
                     {
@@ -139,7 +133,10 @@ namespace ATİÇAY3
                 {
                     if (InvokeRequired)
                     {
-                        Invoke(new Action(() => { gorevdurum.Text = "Normal"; gorevdurum.ForeColor = Color.Green; }));
+                        Invoke(new Action(() => {
+                            gorevdurum.Text = "Normal";
+                            gorevdurum.ForeColor = Color.Green;
+                        }));
                     }
                     else
                     {
@@ -154,7 +151,6 @@ namespace ATİÇAY3
             }
         }
         /* UpdateTaskManagerStatus() Fonksiyon Tanımlaması Sonu */
-
 
         private void EnableAutorun()
         {
@@ -173,7 +169,6 @@ namespace ATİÇAY3
                 MessageBox.Show("Autorun ayarları etkinleştirilirken bir hata oluştu: " + ex.Message, "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
 
         /* Bu Öğe CheckApplicationStatus() ile bağlantılıdır. UpdateStatusText() Fonksiyon Tanımlamaları başlangıç  */
         private void UpdateStatusText()
@@ -238,7 +233,6 @@ namespace ATİÇAY3
         }
         /*  EnableTaskmanager() Fonksiyon Tanımlamaları Son*/
 
-
         /* Bu öğe Formu yönetici olarak yeniden başlatmaya yarar. RestartAsAdminstrator() Fonksiyon Tanımlamaları Baş*/
         static void RestartAsAdministrator()
         {
@@ -263,7 +257,6 @@ namespace ATİÇAY3
         }
 
         /* RestartAsAdminstrator() Fonksiyon Tanımlamaları Son*/
-
 
         /*Bu öğe sistemde çalışmakta olan servisatk isimli işlemi sonlandırır. AtakServisiKapat() Fonksiyon Tanımlamaları Baş*/
         private void AtakServisKapat()
@@ -295,8 +288,6 @@ namespace ATİÇAY3
             }
         }
         /*AtakServisKapat Öğe tanımlamaları son.*/
-
-
 
         /* ExplorerRestart() Fonksiyon Tanımlamaları Baş*/
         private void ExplorerRestart()
@@ -335,7 +326,6 @@ namespace ATİÇAY3
             string dosyaAdi = "antiatak_aticay.exe"; // Kaydedilecek dosyanın adı
             string dosyaYolu = Path.Combine(startupKlasor, dosyaAdi); // Tam dosya yolunu oluşturun
 
-
             if (File.Exists(dosyaYolu))
             {
                 antiAtakDurum.Text = "AntiATAK Kurulmuş!";
@@ -356,14 +346,12 @@ namespace ATİÇAY3
             }
         }
 
-
         /*AntiATAK için gereken tertibatı kurar.AntiATAKkur() Fonksiyonu Başlangıcı*/
         private async void AntiATAKkur()
         {
             string startupKlasor = Environment.GetFolderPath(Environment.SpecialFolder.Startup); // shell:startup klasörünün tam yolu
             string dosyaAdi = "antiatak_aticay.exe"; // Kaydedilecek dosyanın adı
             string dosyaYolu = Path.Combine(startupKlasor, dosyaAdi); // Tam dosya yolunu oluşturun
-
 
             if (File.Exists(dosyaYolu))
             {
@@ -379,9 +367,7 @@ namespace ATİÇAY3
                 try
                 {
 
-
                     antiatakkurProgress.PerformStep();
-
 
                     HttpResponseMessage response = await httpClient.GetAsync(url);
                     response.EnsureSuccessStatusCode();
@@ -403,7 +389,6 @@ namespace ATİÇAY3
                     logat("Antiatak kuruldu");
                     AntiAtakKaldir.Text = "AntiATAK Kaldır";
 
-
                 }
                 catch (Exception ex)
                 {
@@ -414,15 +399,12 @@ namespace ATİÇAY3
         }
         /*AntiATAKkur() Fonksiyonu sonu*/
 
-
-
         /* Kurulu AntiATAK Tertibatını kaldırır. AntiATAKkaldir() Fonksiyonu Başlangıcı*/
         private void AntiATAKkaldir()
         {
             string startupKlasor = Environment.GetFolderPath(Environment.SpecialFolder.Startup); // shell:startup klasörünün tam yolu
             string dosyaAdi = "antiatak_aticay.exe"; // Kaydedilecek dosyanın adı
             string dosyaYolu = Path.Combine(startupKlasor, dosyaAdi); // Tam dosya yolunu oluşturun
-
 
             if (!File.Exists(dosyaYolu))
             {
@@ -446,12 +428,9 @@ namespace ATİÇAY3
                     MessageBox.Show("Hata oluştu: " + ex.Message);
                 }
 
-
             }
         }
         /* AntiATAKkaldir() Fonksiyonu Son*/
-
-
 
         /*Bu fonksiyon kullanıcı tarayıcısında github sayfasını açar. GithubOpenInBrowser() Başlangıç*/
         private void GithubOpenInBrowser()
@@ -472,7 +451,6 @@ namespace ATİÇAY3
                 UseShellExecute = true
             });
         }
-
 
         /* CCe Son sürümü Comodo CDNden indirip masaüstüne kaydeder. CCeDownload() Fonksiyonu Başlangıcı*/
         private async void CCeDownload()
@@ -556,21 +534,15 @@ namespace ATİÇAY3
             }
         }
 
-
-
         /* Ortadaki Mesaj Kutusuna Birşeyler Yazdırmak için gerekli fonksiyon*/
         private void logat(string message)
         {
             logbox.Text += "[" + DateTime.Now.ToString("HH:mm:ss") + "] " + message + Environment.NewLine;
         }
 
-
         //////////////////// //////////////////// ///////
         ////////////// FONKSİYONLAR BİTİŞ ///////////////
         //////////////////// //////////////////// ///////
-
-
-
 
         private void GorevYoneticisiniAktiflesir_Click(object sender, EventArgs e)
         {
@@ -643,8 +615,6 @@ namespace ATİÇAY3
             CopyFileFromFlashDrive();
         }
 
-
-
         public void ToggleTheme()
         {
             if (theme == 0)
@@ -670,41 +640,28 @@ namespace ATİÇAY3
                 statusStrip1.BackColor = Color.Black;
                 statusStrip1.ForeColor = Color.White;
                 pxbox.BackgroundImage = Properties.Resources.atidark;
-
                 GorevYoneticisiniAktiflesir.BackColor = Color.DarkGreen;
                 GorevYoneticisiniAktiflesir.ForeColor = Color.White;
-
                 GorevYoneticisiniBaslat.BackColor = Color.Goldenrod;
                 GorevYoneticisiniBaslat.ForeColor = Color.White;
-
                 GorevYoneticisiniDevredisiBirak.BackColor = Color.Firebrick;
                 GorevYoneticisiniDevredisiBirak.ForeColor = Color.White;
-
                 GizliDosyalariGoster.BackColor = Color.DarkGreen;
                 GizliDosyalariGoster.ForeColor = Color.White;
-
                 DosyalariGizle.BackColor = Color.Firebrick;
                 DosyalariGizle.ForeColor = Color.White;
-
                 restartexplorer.BackColor = Color.Goldenrod;
                 restartexplorer.ForeColor = Color.White;
-
                 autorunAktiflestir.BackColor = Color.SteelBlue;
                 autorunAktiflestir.ForeColor = Color.White;
-
                 AntiAtakKur.BackColor = Color.Teal;
                 AntiAtakKur.ForeColor = Color.White;
-
                 AntiAtakKaldir.BackColor = Color.Purple;
                 AntiAtakKaldir.ForeColor = Color.White;
-
                 CCeIndir.BackColor = Color.SaddleBrown;
                 CCeIndir.ForeColor = Color.White;
-
                 themebutton.BackColor = Color.Black;
                 themebutton.ForeColor = Color.White;
-
-
                 theme = 1;
             }
             else
@@ -729,44 +686,32 @@ namespace ATİÇAY3
                 button2.ForeColor = Color.Blue;
                 button2.BackColor = Color.Transparent;
                 pxbox.BackgroundImage = Properties.Resources.aticaybeyaz;
-
                 GorevYoneticisiniAktiflesir.BackColor = Color.PaleGreen;
                 GorevYoneticisiniAktiflesir.ForeColor = Color.Black;
-
                 GorevYoneticisiniBaslat.BackColor = Color.Yellow;
                 GorevYoneticisiniBaslat.ForeColor = Color.Black;
-
                 GorevYoneticisiniDevredisiBirak.BackColor = Color.LightCoral;
                 GorevYoneticisiniDevredisiBirak.ForeColor = Color.Black;
-
                 GizliDosyalariGoster.BackColor = Color.PaleGreen;
                 GizliDosyalariGoster.ForeColor = Color.Black;
-
                 DosyalariGizle.BackColor = Color.LightCoral;
                 DosyalariGizle.ForeColor = Color.Black;
-
                 restartexplorer.BackColor = Color.Yellow;
                 restartexplorer.ForeColor = Color.Black;
-
                 autorunAktiflestir.BackColor = Color.LightBlue;
                 autorunAktiflestir.ForeColor = Color.Black;
-
                 AntiAtakKur.BackColor = Color.Aquamarine;
                 AntiAtakKur.ForeColor = Color.Black;
-
                 AntiAtakKaldir.BackColor = Color.Violet;
                 AntiAtakKaldir.ForeColor = Color.Black;
-
                 CCeIndir.BackColor = Color.AntiqueWhite;
                 CCeIndir.ForeColor = Color.Black;
-
                 themebutton.BackColor = SystemColors.Control;
                 themebutton.ForeColor = Color.Black;
-
-
                 theme = 0;
             }
         }
+
 
         public void CopyFileFromFlashDrive()
         {
@@ -801,7 +746,6 @@ namespace ATİÇAY3
                 }
             }
         }
-
 
         private void SearchAndCopyFile(string directoryPath, string fileName, string destinationPath, char driveLetter, string driveName)
         {
@@ -843,12 +787,12 @@ namespace ATİÇAY3
                                     writer.WriteLine("================");
                                     writer.WriteLine("Oluşturma Zamanı: " + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")); // Tarih ve saat bilgisini yazdır
                                     writer.WriteLine(" ");
-                                    writer.WriteLine("Bu dosya " + driveLetter + "(" + driveName + ") Belleğinin içinden çıkartılmıştır. ATAK için anahtar dosyayı içerir. ");
+                                    writer.WriteLine("Bu dosya " + driveLetter + " (" + driveName + ")  Belleğinin içinden çıkartılmıştır. ATAK için anahtar dosyayı içerir. ");
                                     writer.WriteLine("Kendi USB Belleğinize atakveri.cikti txt içeriğindeki dizine atak.veri'yi kopyalayarak tahtayı açabilirsiniz.");
                                     writer.WriteLine("Örneğin çıktı 'E:\\a735d8a8449bae6641f3128407e970c6\\atak.veri' olsun. Kendi usbnizin içinde");
                                     writer.WriteLine("'a735d8a8449bae6641f3128407e970c6' isimli bir klasör açıp içine atak.veri'yi kopyalarsanız tahtayı TEORİDE kendi usbniz ile açabilirsiniz.");
                                     writer.WriteLine(" ");
-                                    writer.WriteLine("https://github.com/prescionx/aticay/wiki/A.T.A.K-1.0.9-.ini-algoritmas%C4%B1-a%C3%A7%C4%B1kland%C4%B1");
+                                    writer.WriteLine("https://github.com/prescionx/aticay/wiki/A.T.A.K-1.0.9-%C3%87al%C4%B1%C5%9Fma-prensibi-hakk%C4%B1nda");
                                     writer.WriteLine("adresini ziyaret edin veya program üzerindeki yardım butonuna tıkladıktan sonra wikiye gelin ve oradan okuyun.");
                                 }
                             }
@@ -879,8 +823,6 @@ namespace ATİÇAY3
         }
     }
 }
-
-
 
 /*
 When the sun goes down, all our sins collide
