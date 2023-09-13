@@ -1,0 +1,32 @@
+name: Build and Release
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+env:
+  SOLUTION_FILE_PATH: ATİÇAY3/ATİÇAY3.sln
+  BUILD_CONFIGURATION: Release
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Build and Package
+      working-directory: ${{env.GITHUB_WORKSPACE}}
+      run: |
+        nuget restore ${{env.SOLUTION_FILE_PATH}}
+        msbuild /p:Configuration=${{env.BUILD_CONFIGURATION}} ${{env.SOLUTION_FILE_PATH}}
+        mkdir -p artifacts
+        cp -r ATİÇAY3/bin/${{env.BUILD_CONFIGURATION}}/* artifacts/
+      
+    - name: Upload Artifact
+      uses: actions/upload-artifact@v2
+      with:
+        name: ATİÇAY3-artifact
+        path: artifacts/
