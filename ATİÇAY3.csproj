@@ -17,6 +17,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Resources\atilight.png" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Content Include="aticayv3.ico" />
   </ItemGroup>
 

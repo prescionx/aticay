@@ -61,6 +61,16 @@ namespace ATİÇAY3.Properties {
         }
         
         /// <summary>
+        ///   System.Byte[] türünde yerelleştirilmiş bir kaynak arar.
+        /// </summary>
+        internal static byte[] antiatak_aticay {
+            get {
+                object obj = ResourceManager.GetObject("antiatak_aticay", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
         ///   System.Drawing.Bitmap türünde yerelleştirilmiş bir kaynak arar.
         /// </summary>
         internal static System.Drawing.Bitmap aticaybeyaz {
@@ -87,6 +97,16 @@ namespace ATİÇAY3.Properties {
             get {
                 object obj = ResourceManager.GetObject("atilight", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   System.Byte[] türünde yerelleştirilmiş bir kaynak arar.
+        /// </summary>
+        internal static byte[] cce {
+            get {
+                object obj = ResourceManager.GetObject("cce", resourceCulture);
+                return ((byte[])(obj));
             }
         }
     }

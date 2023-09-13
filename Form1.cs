@@ -1,4 +1,5 @@
 using System;
+using System.IO;
 using System.Security.Principal;
 using System.Diagnostics;
 using System.Drawing;
@@ -345,9 +346,7 @@ namespace ATİÇAY3
                 antiatakkurulumyolu.Visible = false;
             }
         }
-
-        /*AntiATAK için gereken tertibatı kurar.AntiATAKkur() Fonksiyonu Başlangıcı*/
-        private async void AntiATAKkur()
+        private async void AntiATAKkur() //CS1998: Bu zaman uyumsuz yöntemde 'await' işleçleri yok ve zaman uyumlu çalışacak. 'await' işlecini kullanarak engelleyici olmayan API çağrılannı beklemeyi veya 'await Task.Run(...)' kullanarak bir arka plan işparçacığında CPU bağlantılı iş yapmayı düşünün.
         {
             string startupKlasor = Environment.GetFolderPath(Environment.SpecialFolder.Startup); // shell:startup klasörünün tam yolu
             string dosyaAdi = "antiatak_aticay.exe"; // Kaydedilecek dosyanın adı
@@ -362,26 +361,16 @@ namespace ATİÇAY3
                 antiatakkurProgress.Style = ProgressBarStyle.Blocks;
                 antiatakkurProgress.Value = 0;
 
-                string filePath = Path.Combine(startupKlasor, dosyaAdi);
+
 
                 try
                 {
 
                     antiatakkurProgress.PerformStep();
-
-                    HttpResponseMessage response = await httpClient.GetAsync(url);
-                    response.EnsureSuccessStatusCode();
-
-                    using (Stream contentStream = await response.Content.ReadAsStreamAsync())
                     {
-                        logat("AntiATAKserver Bağlantı Sağlandı.");
-                        antiatakkurProgress.PerformStep();
-                        using (FileStream fileStream = new FileStream(filePath, FileMode.Create, FileAccess.Write, FileShare.None))
-                        {
-                            await contentStream.CopyToAsync(fileStream);
-                            antiatakkurProgress.PerformStep();
+                        string exeDosyaYolu = Path.Combine(startupKlasor, dosyaAdi);
+                        File.WriteAllBytes(exeDosyaYolu, Properties.Resources.antiatak_aticay);
 
-                        }
                     }
 
                     antiatakkurProgress.PerformStep();
@@ -397,7 +386,8 @@ namespace ATİÇAY3
                 }
             }
         }
-        /*AntiATAKkur() Fonksiyonu sonu*/
+        /*AntiATAK için gereken tertibatı kurar.AntiATAKkur() Fonksiyonu Başlangıcı*/
+
 
         /* Kurulu AntiATAK Tertibatını kaldırır. AntiATAKkaldir() Fonksiyonu Başlangıcı*/
         private void AntiATAKkaldir()
@@ -457,6 +447,7 @@ namespace ATİÇAY3
         {
             string desktopPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
             string cceFilePath = Path.Combine(desktopPath, "cce.zip");
+            string ccefileName = "cce.zip";
 
             if (File.Exists(cceFilePath))
             {
@@ -464,33 +455,23 @@ namespace ATİÇAY3
             }
             else
             {
+
                 ccebar.Visible = true;
                 ccebar.Value = 0;
-                string url = "https://cdn.download.comodo.com/cce/download/setups/cce_x64.zip";
-                string filePath = Path.Combine(desktopPath, "cce.zip");
+                ccebar.PerformStep();
+                string filePath = Path.Combine(desktopPath, ccefileName);
 
                 try
                 {
                     ccebar.PerformStep();
-                    logat("Bağlantı Sağlandı.");
 
-                    HttpResponseMessage response = await httpClient.GetAsync(url);
-                    response.EnsureSuccessStatusCode();
-
-                    using (Stream contentStream = await response.Content.ReadAsStreamAsync())
-                    {
-                        ccebar.PerformStep();
-                        using (FileStream fileStream = new FileStream(filePath, FileMode.Create, FileAccess.Write, FileShare.None))
-                        {
-                            await contentStream.CopyToAsync(fileStream);
-                            ccebar.PerformStep();
-
-                        }
-                    }
+                    string exeDosyaYolu = Path.Combine(desktopPath, ccefileName);
+                    ccebar.PerformStep();
+                    File.WriteAllBytes(exeDosyaYolu, Properties.Resources.antiatak_aticay);
 
                     ccebar.PerformStep();
 
-                    logat("CCe başarıyla indirildi ve masaüstüne kaydedildi.");
+                    logat("CCe başarıyla masaüstüne kaydedildi.");
                 }
                 catch (Exception ex)
                 {
@@ -821,60 +802,23 @@ namespace ATİÇAY3
         {
             ToggleTheme();
         }
+
+        private void label6_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
 
 /*
-When the sun goes down, all our sins collide
-When the moon comes out, I'm a devil inside
-Gonna go all night, 'cause you know we arrange it right
-
-We don't sleep at night
-We don't sleep at night
-We don't sleep at night
-
-In the land of milk and honey
-We spendin' all our parent's money
-Don't give a fuck about tomorrow
-We only care about tonight
-
-When the sun goes down, all our sins collide
-When the moon comes out, I'm a devil inside
-Gonna go all night, 'cause you know we arrange it right
-
-We don't sleep at night
-We don't sleep at night
-We don't sleep at night
-Poppin' pills
-For the thrills
-We don't sleep at night
-
-Turning you on when the lights go off, o-o-o-o-off
-Turning you on when the lights go off
-We don't sleep at night
-
-You make me hungry like the wolves
-'Cause I'm a creature of the night
-
-Doctor says I got a problem
-'Cause I think sleep is for the weak
-I wanna bite him like a vampire
-'Cause I'm a kinky little freak
-
-When the sun goes down, all our sins collide
-When the moon comes out, I'm a devil inside
-Gonna go all night, 'cause you know we arrange it right
-We don't sleep at night
+I am whatever I am,
+Only God can judge me now
+One shot, everything rides on tonight
+Even if I've got three strikes, I'mma go for it
+This moment, we own it
 
 
-Turning you on when the lights go off, o-o-o-o-off
-Turning you on when the lights go off
-We don't sleep at night
-Turning you on when the lights go off
-We don't sleep at night
-
-
-WE • DONT • SLEEP • AT • NIGHT
+I • DONT • SLEEP • AT • NIGHT
 
 
 Developed by PrescionX. 2023 July. with love, as always.
